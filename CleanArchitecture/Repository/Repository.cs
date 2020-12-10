@@ -1,5 +1,4 @@
 ﻿using Data;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Repository.Context;
 using System;
@@ -14,18 +13,15 @@ namespace Repository
     {
         private readonly AppDbContext _context;
         private DbSet<T> entities;
-        private HttpContext httpContext;
 
-        public Repository(AppDbContext context, HttpContext httpContext)
+        public Repository(AppDbContext context)
         {
             _context = context;
             this.entities = context.Set<T>();
-            this.httpContext = httpContext;
         }
 
         public void Add(T entity)
         {
-            entity.IpAddress = httpContext.Connection.RemoteIpAddress.ToString();
             entity.CreatedDate = DateTime.Now;
             _context.Entry(entity).State = EntityState.Added;
             _context.SaveChanges();
@@ -52,7 +48,6 @@ namespace Repository
 
         public void Update(T entity)
         {
-            entity.IpAddress = httpContext.Connection.RemoteIpAddress.ToString();
             entity.ModifiedDate = DateTime.Now;
             _context.Entry(entity).State = EntityState.Modified;
             _context.SaveChanges();

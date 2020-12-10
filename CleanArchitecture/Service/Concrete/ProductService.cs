@@ -10,12 +10,10 @@ namespace Service.Concrete
     public class ProductService : IProductService
     {
         private readonly IRepository<Product> productRepository;
-        private readonly IRepository<Category> categoryRepository;
 
-        public ProductService(IRepository<Product> productRepository, IRepository<Category> categoryRepository)
+        public ProductService(IRepository<Product> productRepository)
         {
             this.productRepository = productRepository;
-            this.categoryRepository = categoryRepository;
         }
         public void Add(Product product)
         {
