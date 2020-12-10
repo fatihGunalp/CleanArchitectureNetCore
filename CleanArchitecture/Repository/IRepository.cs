@@ -1,6 +1,7 @@
 ﻿using Data;
 using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace Repository
@@ -12,5 +13,6 @@ namespace Repository
         void Add(T entity);
         void Update(T entity);
         void Delete(T entity);
+        List<T> Where(Expression<Func<T, bool>> exp);
     }
 }

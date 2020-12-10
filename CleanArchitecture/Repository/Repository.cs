@@ -5,6 +5,7 @@ using Repository.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace Repository
@@ -55,6 +56,11 @@ namespace Repository
             entity.ModifiedDate = DateTime.Now;
             _context.Entry(entity).State = EntityState.Modified;
             _context.SaveChanges();
+        }
+
+        public List<T> Where(Expression<Func<T, bool>> exp)
+        {
+            return entities.Where(exp).ToList();
         }
     }
 }
