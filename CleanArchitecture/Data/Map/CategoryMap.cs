@@ -1,8 +1,5 @@
-﻿using Data.Entitiy;
+﻿using Data.Entity;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Data.Map
 {
